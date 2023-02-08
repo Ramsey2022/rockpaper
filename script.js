@@ -10,29 +10,45 @@ etc. (x)
 
 */
 
-const options = ['rock', 'paper', 'scissors'];
 
-  function getComputerChoice(choices) {
-    return options[Math.floor(Math.random()*options.length)];
-}  
-  const computerSelection = getComputerChoice();
-    console.log(computerSelection);
-  let playerSelection = prompt('Rock, Paper, Scissors?').toLowerCase(); 
-    console.log(playerSelection);
 
-  function playRound(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) {
-      alert('Its a draw! Try again.');
-    } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-      alert('You won! Rock smashes scissors!');
-    } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-      alert('You won! Paper smothers rock!');
-    } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-      alert('You won! Scissors cut through paper with ease.');
+function getComputerChoice() {
+  let choices = ['rock','paper','scissors'];
+  return choices[Math.floor(Math.random() * choices.length)];
+}
+function user() {
+let playerSelection = prompt('Rock, Paper, Scissors?').toLowerCase();
+return playerSelection
+}
+
+ let com = getComputerChoice();
+ let player = user();
+
+  /*
+when a round is finished
+plus 1 to cpu or player score
+once 5 rounds complete endgame
+  */
+
+
+/*
+core game
+*/
+  function playRound(player, com) {
+    if (player === com) {
+      return console.log(`Its a draw! You chose ${player} and cpu chose ${com}`);
+    } else if (player === 'rock' && com === 'scissors') {
+      return console.log('You won! Your rock smashes scissors!');
+    } else if (player === 'paper' && com === 'rock') {
+      return console.log('You won! Your paper smothers rock!');
+    } else if (player === 'scissors' && com === 'paper') {
+      return console.log('You won! Your scissors cut through paper with ease.');
     } else {
-      alert('You lost. Curse this machine.');
+      return console.log('You lost. Curse this machine.');
     }
-    return (playerSelection, computerSelection);
   }
+  console.log(playRound(player,com));
+
+
   
-    
+
