@@ -21,34 +21,45 @@ let playerSelection = prompt('Rock, Paper, Scissors?').toLowerCase();
 return playerSelection
 }
 
- let com = getComputerChoice();
- let player = user();
+function game() {
+  let score = 0;
+  let comScore = 0;
+  
 
-  /*
-when a round is finished
-plus 1 to cpu or player score
-once 5 rounds complete endgame
-  */
-
+  while(score < 5 && comScore < 5) {
+  let com = getComputerChoice();
+  let player = user();
+    console.log(playRound(player, com));
+    
+  
 
 /*
 core game
 */
   function playRound(player, com) {
-    if (player === com) {
-      return console.log(`Its a draw! You chose ${player} and cpu chose ${com}`);
+        if (player === com) {
+      return (`Its a draw! You chose ${player} and cpu chose ${com}. Score = ${score} Cpu = ${comScore}`);
     } else if (player === 'rock' && com === 'scissors') {
-      return console.log('You won! Your rock smashes scissors!');
+      score++;
+      return (`You won! Your rock smashes scissors! Score = ${score} Cpu = ${comScore}`);
     } else if (player === 'paper' && com === 'rock') {
-      return console.log('You won! Your paper smothers rock!');
+      score++;
+      return (`You won! Your paper smothers rock! Score = ${score} Cpu = ${comScore}`);
     } else if (player === 'scissors' && com === 'paper') {
-      return console.log('You won! Your scissors cut through paper with ease.');
+      score++;
+      return (`You won! Your scissors cut through paper with ease. Score = ${score} Cpu = ${comScore}`);
     } else {
-      return console.log('You lost. Curse this machine.');
+      comScore++;
+      return (`You lost. Curse this machine. Score = ${score} Cpu = ${comScore}`);
     }
   }
-  console.log(playRound(player,com));
-
-
+  }
+  console.log('game over');
+  
+}
+  
   
 
+
+
+game();
