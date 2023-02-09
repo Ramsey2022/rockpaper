@@ -6,8 +6,6 @@ prompt returns result and phrase of victory or failure (x)
 if player selection & computer selection === then return 'tie'
 else player = rock & cpu = scissors return ' rock beats scissors'
 etc. (x)
-
-
 */
 
 
@@ -25,14 +23,10 @@ function game() {
   let score = 0;
   let comScore = 0;
   
-
   while(score < 5 && comScore < 5) {
   let com = getComputerChoice();
   let player = user();
     console.log(playRound(player, com));
-    
-  
-
 /*
 core game
 */
@@ -57,9 +51,4 @@ core game
   console.log('game over');
   
 }
-  
-  
-
-
-
 game();
