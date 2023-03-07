@@ -1,0 +1,32 @@
+
+#main {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#btnContainer {
+    justify-content: space-between;  
+}
+
+#resultContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#scoreContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/*
+.button img{
+    width:150px;
+    height:150px;
+}
+*/
