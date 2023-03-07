@@ -6,32 +6,18 @@ let roundWinner = '';
 
 const result = document.getElementById('resultContainer');
 const scoreBoard = document.getElementById('scoreContainer');
-
 const buttons = document.querySelectorAll('button');
 const main = document.querySelector('main');
 const rockBtn = document.getElementById('rock');
 const paperBtn = document.getElementById("paper");
 const scissorsBtn = document.getElementById("scissors");
 const resultContent = document.createElement('div');
-resultContent.classList.add('content');
-resultContent.textContent = '';
-const resultHead = document.createElement('h2');
-resultHead.textContent = 'SPIRIT';
-result.appendChild(resultHead);
-result.appendChild(resultContent);
-/*
 const scoreContent = document.getElementById('score');
 const comScoreContent = document.getElementById('comScore');
 
-const scores = document.createElement('div');
-scores.classList.add('scores');
-scores.textContent = scoreContent, comScoreContent;
-*/
-const scoreHead = document.createElement('h2');
-scoreHead.textContent = 'SCORE';
-scoreBoard.appendChild(scoreHead);
-
-//scoreBoard.appendChild(scores);
+resultContent.classList.add('content');
+resultContent.textContent = '';
+result.appendChild(resultContent);
 
 
 function playRound(player, com) {
@@ -56,13 +42,14 @@ function playRound(player, com) {
   }
   roundResult(roundWinner, player, com);
 }
-scoreBoard.textContent = `Player: ${score} CPU: ${comScore}`;
-//comScoreContent.textContent = `CPU: ${comScore}`;
 
 function clickListener(event) {
   const player = event.target.id;
   const com = getComputerChoice();
   playRound(player,com);
+
+  document.getElementById('score').textContent = 'Player: ' + score;
+  document.getElementById('comScore').textContent = 'CPU: ' + comScore;
 
   console.log(score, comScore);
 }
@@ -119,21 +106,6 @@ function winner(){
   }
 }
   */
-  
- 
-/*
-
-  function roundResult() {
-        if (roundWinner = 'tie') {
-      result.textContent = (`Its a draw! You chose ${player} and cpu chose ${com}.`);
-    }else if (roundWinner = 'player'){
-      result.textContent = (`You won! ${player} beats ${com}.`);
-    } if (roundWinner = 'computer'){
-      result.textContent = (`You lost. ${com} beats ${player}.`);
-    }
-  }
-
-*/
 
 
   
