@@ -2,8 +2,8 @@ let score = 0;
 let comScore = 0;
 let roundWinner = '';
 
-
-
+//UI
+const reload = document.getElementById('reload');
 const result = document.getElementById('resultContainer');
 const scoreBoard = document.getElementById('scoreContainer');
 const buttons = document.querySelectorAll('button');
@@ -19,7 +19,12 @@ resultContent.classList.add('content');
 resultContent.textContent = '';
 result.appendChild(resultContent);
 
+rockBtn.addEventListener("click", clickListener);
+paperBtn.addEventListener("click", clickListener);
+scissorsBtn.addEventListener("click", clickListener);
+reload.addEventListener('click', restart);
 
+//Game
 function playRound(player, com) {
   if (player === com) {
     roundWinner = 'tie'
@@ -40,104 +45,59 @@ function playRound(player, com) {
     comScore++
     roundWinner = 'computer'
   }
-  roundResult(roundWinner, player, com);
 }
 
 function clickListener(event) {
   const player = event.target.id;
   const com = getComputerChoice();
   playRound(player,com);
+  roundResult(roundWinner, player, com);
 
   document.getElementById('score').textContent = 'Player: ' + score;
   document.getElementById('comScore').textContent = 'CPU: ' + comScore;
 
-  console.log(score, comScore);
-}
+    if (score !== 5 || comScore !== 5){
+      reload.disabled = true;
+    }
 
-rockBtn.addEventListener("click", clickListener);
-paperBtn.addEventListener("click", clickListener);
-scissorsBtn.addEventListener("click", clickListener);
-
+    if (score === 5 || comScore === 5){
+      rockBtn.disabled = true;
+      paperBtn.disabled = true;
+      scissorsBtn.disabled = true;
+      reload.disabled = false;
+      return winner();
+    }
+  }
 
 function getComputerChoice() {
   let choices = ['rock','paper','scissors'];
   return choices[Math.floor(Math.random() * choices.length)];
 }
 
-
-
-
-
 function roundResult(roundWinner, player, com) {
   if (roundWinner === 'player') {
-    resultContent.textContent = (`${player} beats ${com}`);
+    resultContent.textContent = (`You won! ${player} beats ${com}`);
     return;
   }
   if (roundWinner === 'computer') {
-    resultContent.textContent = (`${player} is beaten by ${com}`);
+    resultContent.textContent = (`You lost! ${player} is beaten by ${com}`);
     return;
   }
 
-  else {resultContent.textContent = (`${player} ties with ${com}`);
+  else {resultContent.textContent = (`It's a draw! ${player} ties with ${com}`);
   }
 }
 
-
-/*
-function gameOver(){
-  if (score === 5 || comScore === 5){
-    return winner();
-  }
-}
 function winner(){
   if (score > comScore){
-    result.textContent = "You Win!"
-  } else {
-    result.textContent = "You lost! Try again!"
+    result.textContent = "VICTORY!";
+    return;
+  } else if (score < comScore){
+    result.textContent = "DEFEAT! Try again!";
+    return;
   }
 }
-*/
-/*
-function winner(){
-  if (score > comScore){
-    return "You Win!"
-  } else {
-    return "You lost! Try again!"
-  }
+
+function restart(){
+window.location.reload();
 }
-  */
-
-
-  
-  
-  
-
-/*
-<body>
-<div id = 'main'>
-    <h1>ROCK, PAPER, SCISSORS</h1>
-<div id = 'btnContainer'>
-    <button id = 'rock'>Rock</button>
-    <button id = 'paper'>Paper</button>
-    <button id = 'scissors'>Scissors</button>
-</div>
-
-//input type=image class = options id= rock src=picture
-
-<div id = 'resultContainer'>
-
-// you chose this cpu chose that
-
-</div>
-<div id = 'scoreContainer'>
-
-// constant score, changes with rounds
-
-</div>
-
-//playagainbutton
-
-</div>
-<script src="script.js"></script>
-</body>
-*/
